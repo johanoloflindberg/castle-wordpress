@@ -100,7 +100,8 @@ if(!class_exists('WP_Plugin_Userbin')) {
           'local_id'      => $user->id,
           'username' => $user->user_login,
           'email'    => $user->user_email,
-          'password' => 'phpass:'.$user->user_pass
+          'password' => 'phpass:'.$user->user_pass,
+          'signed_up_at' => strtotime($user->user_registered)*1000
         ));
         if ($response->successful()) {
           $identity = $response->as_json();
