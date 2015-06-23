@@ -1,10 +1,10 @@
 <div class="wrap">
   <form action="options.php" method="post">
     <?php screen_icon(); ?>
-    <h2><?php _e('Userbin'); ?></h2>
+    <h2><?php _e('Castle'); ?></h2>
 <!--
     <p>
-      <?php _e('This is where you enter you Userbin credentials and make various settings'); ?>
+      <?php _e('This is where you enter you Castle credentials and make various settings'); ?>
     </p>
 
     <h3><?php _e('Generic Settings'); ?></h3>
@@ -14,15 +14,14 @@
       <tbody>
         <tr valign="top">
           <th scope="row">
-            <label for="<?php self::_settings_id('appId'); ?>"><?php _e('Application ID'); ?></label>
+            <label for="<?php self::_settings_id('appId'); ?>"><?php _e('App ID'); ?></label>
           </th>
           <td>
-            <input type="number"
-              class="regular-text"
+            <input type="text"
+              class="regular-text code"
               id="<?php self::_settings_id('appId'); ?>"
               name="<?php self::_settings_name('appId'); ?>"
               value="<?php esc_attr_e($settings['appId']); ?>" />
-            <p class="description"><?php _e('Userbin application ID'); ?></p>
           </td>
         </tr>
 
@@ -41,7 +40,7 @@
 
         <tr valign="top">
           <th scope="row">
-            <label>Userbin active</label>
+            <label>Castle active</label>
           </th>
           <td>
             <?= $settings['activated'] ? 'yes' : 'no' ?>
