@@ -82,15 +82,17 @@ if(!class_exists('WP_Plugin_Castle')) {
       } else {
         // Frontend only actions
       }
-      add_action('wp_login', array(__CLASS__, 'user_login'), 100, 2);
-      add_action('wp_logout', array(__CLASS__, 'user_logout'), 1);
-      add_action('delete_user', array(__CLASS__, 'user_delete'), 1);
-      add_action('user_register', array(__CLASS__, 'user_register'), 1);
-      add_action('profile_update', array(__CLASS__, 'user_update'), 1);
-      add_action('password_reset', array(__CLASS__, 'user_reset_password'), 1);
-      add_action('wp_footer', array(__CLASS__, 'script_tag'), 100);
-      add_action('admin_footer', array(__CLASS__, 'script_tag'), 100);
-      add_action('login_footer', array(__CLASS__, 'script_tag' ));
+      if (self::activated()) {
+        add_action('wp_login', array(__CLASS__, 'user_login'), 100, 2);
+        add_action('wp_logout', array(__CLASS__, 'user_logout'), 1);
+        add_action('delete_user', array(__CLASS__, 'user_delete'), 1);
+        add_action('user_register', array(__CLASS__, 'user_register'), 1);
+        add_action('profile_update', array(__CLASS__, 'user_update'), 1);
+        add_action('password_reset', array(__CLASS__, 'user_reset_password'), 1);
+        add_action('wp_footer', array(__CLASS__, 'script_tag'), 100);
+        add_action('admin_footer', array(__CLASS__, 'script_tag'), 100);
+        add_action('login_footer', array(__CLASS__, 'script_tag' ));
+      }
     }
 
     private static function add_filters() {
