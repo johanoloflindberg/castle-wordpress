@@ -91,7 +91,6 @@ if(!class_exists('WP_Plugin_Castle')) {
         add_action('password_reset', array(__CLASS__, 'user_reset_password'), 1);
         add_action('wp_footer', array(__CLASS__, 'script_tag'), 100);
         add_action('admin_footer', array(__CLASS__, 'script_tag'), 100);
-        add_action('login_footer', array(__CLASS__, 'script_tag' ));
       }
     }
 
