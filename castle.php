@@ -85,6 +85,7 @@ if(!class_exists('WP_Plugin_Castle')) {
       if (self::activated()) {
         add_action('wp_login', array(__CLASS__, 'user_login'), 100, 2);
         add_action('wp_logout', array(__CLASS__, 'user_logout'), 1);
+        add_action('wp_login_failed', array(__CLASS__, 'user_login_failed'), 1);
         add_action('delete_user', array(__CLASS__, 'user_delete'), 1);
         add_action('user_register', array(__CLASS__, 'user_register'), 1);
         add_action('profile_update', array(__CLASS__, 'user_update'), 1);
@@ -199,6 +200,16 @@ if(!class_exists('WP_Plugin_Castle')) {
           'user_id' => $current_user->id
         ));
       }
+    }
+
+    public static function user_login_failed($username) {
+      $current_user = wp_get_current_user();
+      Castle::track(Array(
+        'name' => '$login.failed',
+        'details' => Array(
+          'username' => $username
+        )
+      ));
     }
 
     public static function user_register($user_id) {
