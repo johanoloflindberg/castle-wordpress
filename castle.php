@@ -180,7 +180,10 @@ if(!class_exists('WP_Plugin_Castle')) {
       // TODO: delete user
     }
 
-    public static function user_login( $user_login, $user ) {
+    public static function user_login( $user_login, $user = null ) {
+      if (empty($user)) {
+        return;
+      }
       Castle::track(Array(
         'name' => '$login.succeeded',
         'user_id' => $user->id,
