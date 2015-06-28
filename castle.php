@@ -186,11 +186,7 @@ if(!class_exists('WP_Plugin_Castle')) {
       }
       Castle::track(Array(
         'name' => '$login.succeeded',
-        'user_id' => $user->id,
-        'details' => Array(
-          'username' => $user->user_login,
-          'email'    => $user->user_email
-        )
+        'user_id' => $user->id
       ));
       return $user;
     }
@@ -210,7 +206,7 @@ if(!class_exists('WP_Plugin_Castle')) {
       Castle::track(Array(
         'name' => '$login.failed',
         'details' => Array(
-          'username' => $username
+          '$login' => $username
         )
       ));
     }
