@@ -219,7 +219,13 @@ if(!class_exists('WP_Plugin_Castle')) {
     }
 
     public static function user_update($user_id, $old_user_data) {
-      // TODO: update user params
+      if ( ! isset( $_POST['pass1'] ) || '' == $_POST['pass1'] ) {
+        return;
+      }
+      Castle::track(Array(
+        'name' => '$password_change.succeeded',
+        'user_id' => $user_id
+      ));
     }
 
     public static function user_reset_password($user, $new_pass = '') {
