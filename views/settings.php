@@ -43,7 +43,7 @@
             <label>Castle active</label>
           </th>
           <td>
-            <?= $settings['activated'] ? 'yes' : 'no' ?>
+            <?php print($settings['activated'] == true ? 'yes' : 'no') ?>
           </td>
         </tr>
       </tbody>

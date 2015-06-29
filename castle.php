@@ -155,8 +155,11 @@ if(!class_exists('WP_Plugin_Castle')) {
         $settings['apiSecret'] = trim(strip_tags($settings['apiSecret']));
       }
 
-      $valid = self::activate($settings['apiSecret']);
-      $settings['activated'] = $valid;
+      try {
+        $valid = self::activate($settings['apiSecret']);
+        $settings['activated'] = $valid;
+      } catch (Castle_ConfigurationError $exception) {
+      }
 
       return shortcode_atts($defaults, $settings);
     }
